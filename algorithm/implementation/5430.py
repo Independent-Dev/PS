@@ -1,6 +1,6 @@
 import sys
 input = sys.stdin.readline
-result = []
+
 def AC():
     commands = input().strip()
     _ = input()
@@ -18,7 +18,4 @@ def AC():
     return str(array[index[1]:index[-1]][::step])
 
 for _ in range(int(input())):
-    result.append(AC().replace(" ", ''))
-
-for r in result:
-    print(r)
+    print(AC().replace(" ", ''))
