@@ -1,4 +1,4 @@
-# 210621 N과 M silver3
+# 210621 N과 M(4) silver3
 # backtracking
 def solve(length):
     if length == M:
