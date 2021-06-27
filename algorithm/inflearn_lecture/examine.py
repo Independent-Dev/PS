@@ -1,4 +1,4 @@
-import sys, os
+import os
 def examine(function):
     def wrapper():
         count, output = 1, []
@@ -7,8 +7,9 @@ def examine(function):
             f = open(f"{folder_path}/out{count}.txt", 'r')
             for line in f.readlines():
                 output.append(line)
+            count += 1
 
-        for i, o in enumerate(output):
+        for i, o in enumerate(output, start=1):
             input_args = []
             f = open(f"{folder_path}/in{i}.txt", 'r')
             for line in f.readlines():
@@ -19,7 +20,6 @@ def examine(function):
                 print("not success!!")
     return wrapper
 
-sys.stdin = open("input.txt", "rt")  # 파일 읽는 방법을 찾아서 넣어두어야겠다.
 
 # 이걸 데코레이터로 만드는 것도 방법일 것 같다는 생각이 든다.
 # 결과 저장

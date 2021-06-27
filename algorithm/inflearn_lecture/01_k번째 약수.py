@@ -16,8 +16,8 @@ from examine import examine
 #     print(start)
 
 @examine
-def solution(input_args):
-    n, k = map(int, input_args[0].split())
+def solution(*args):
+    n, k = map(int, args[0][0].split())
     count, start = 0, 0
     while count != k:
         start += 1
@@ -30,4 +30,4 @@ def solution(input_args):
         return str(start)
 
 if __name__ == "__main__":
-    solution("x")
+    solution()
