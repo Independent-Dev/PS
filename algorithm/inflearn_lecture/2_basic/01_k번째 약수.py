@@ -1,19 +1,5 @@
-import sys, os
+import sys
 from examine import examine
-# input = sys.stdin.readline
-#
-# n, k = map(int, input().split())
-# count, start = 0, 0
-#
-# while count != k:
-#     start += 1
-#     if start > n:
-#         print(-1)
-#         break
-#     if n % start == 0:
-#         count += 1
-# else:
-#     print(start)
 
 @examine
 def solution(*args):
@@ -31,3 +17,19 @@ def solution(*args):
 
 if __name__ == "__main__":
     solution()
+
+else:
+    input = sys.stdin.readline
+
+    n, k = map(int, input().split())
+    count, start = 0, 0
+
+    while count != k:
+        start += 1
+        if start > n:
+            print(-1)
+            break
+        if n % start == 0:
+            count += 1
+    else:
+        print(start)
