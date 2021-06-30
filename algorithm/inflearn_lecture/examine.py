@@ -19,5 +19,5 @@ def examine(function):
                     print(f"function(): {function(**kwargs, folder_path=os.getcwd(), id=i)}")
                 print(f"output: {o}")
         else:
-            function(*args, **kwargs)
+            return function(*args, **kwargs)
     return wrapper
