@@ -1,5 +1,8 @@
-import os
+import os, functools
+
+
 def examine(function):
+    @functools.wraps(function)
     def wrapper(*args, **kwargs):
         if kwargs['examine']:
             count, output = 1, []
