@@ -1,6 +1,5 @@
 # 210621 N과 M(5) silver3
 # backtracking
-
 def solve(length):
     if length == M:
         print(' '.join(list(map(str, arr))))

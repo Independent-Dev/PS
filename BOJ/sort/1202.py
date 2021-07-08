@@ -4,27 +4,35 @@ import sys
 from heapq import heappush, heappop
 input = sys.stdin.readline
 N, K = list(map(int, input().split()))  # N: 보석의 개수, K: 가방의 개수
-jewelry, bag, result = [], [0] * K, 0
+jewelry, bag, pq, result, i = [], [0] * K, [], 0, 0
 
 for _ in range(N):
-    M, V = list(map(int, input().split()))
-    heappush(jewelry, (-V, M))
+    jewelry.append(list(map(int, input().split())))
 
-for i in range(K):
-    bag[i] = int(input().strip())
+jewelry.sort()
+
+for j in range(K):
+    bag[j] = int(input().strip())
 
 bag.sort()
 
-for _ in range(N):
-    V, M = heappop(jewelry)
-    for i, c in enumerate(bag):
-        if M <= c:
-            bag[i] = 0
-            result += -V
-            K -= 1
-            break
-    if not K:
-        break
+for b in bag:
+    while i < N and b >= jewelry[i][0]:
+        heappush(pq, -jewelry[i][1])
+        i += 1
+
+    if pq:
+        result += -heappop(pq)
+# for _ in range(N):
+#     V, M = heappop(jewelry)
+#     for i, c in enumerate(bag):
+#         if M <= c:
+#             bag[i] = 0
+#             result += -V
+#             K -= 1
+#             break
+#     if not K:
+#         break
 
 print(result)
 

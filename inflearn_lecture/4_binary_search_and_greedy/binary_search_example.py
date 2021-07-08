@@ -1,5 +1,5 @@
 def binary_search(start, target, arr):
-    stop = len(arr)
+    stop = len(arr) - 1
     while start <= stop:
         middle = (start + stop) // 2
         if arr[middle] == target:
