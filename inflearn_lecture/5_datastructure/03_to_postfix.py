@@ -9,6 +9,10 @@ def solution(**kwargs):
     if kwargs['examine']:
         sys.stdin = open(f"{kwargs['folder_path']}/in{kwargs['id']}.txt", 'r')
 
+    input_str = input()
+    result, _ = infix_to_postfix(0)
+    return [[result]]
+
 def infix_to_postfix(i):
     result = ''
     num_list, pre_op_list, post_op_list = [], [], []
@@ -38,9 +42,6 @@ def infix_to_postfix(i):
         result += post_op_list.pop()
     return result, i + 1
 
-input_str = input()
-result, _ = infix_to_postfix(0)
-    return [[result]]
 
 if __name__ == "__main__":
     print(solution(examine=True))
