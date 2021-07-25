@@ -1,10 +1,11 @@
 
-# 210718
+# 210718 ~ 210726
 from examine import examine
 from collections import deque
 import sys
 
 # 강의에서 풀어주신 방식. 이렇게 하면 그런데 속도가 너무 느림...
+# 이걸 수정하기는 했는데.... 이걸 더 빠르게 바꿀 방법은 없으려나...
 @examine
 def solution(**kwargs):
     if kwargs['examine']:
@@ -12,10 +13,12 @@ def solution(**kwargs):
     n, m = map(int, input().split())
     Q = [(pos, val) for pos, val in enumerate(list(map(int, input().split())))]
     Q = deque(Q)
+    sorted_q = sorted(Q, key=lambda x:x[1], reverse=True)  # 추가
     cnt=0
     while True:
         cur = Q.popleft()
-        if any(cur[1] < x[1] for x in Q):
+        if cur[1] != sorted_q[cnt][1]:  # 변경
+        # if any(cur[1] < x[1] for x in Q):
             Q.append(cur)
         else:
             cnt += 1
