@@ -27,9 +27,20 @@ def postorder(x):
         postorder(graph[x][1])
     print(x, end=" ")
 
+# teacher sol
+def DFS(x):
+    if x <= 7:
+        # print(x, end=" ")  # pre
+        DFS(2 * x)
+        # print(x, end=" ")  # in
+        DFS(2 * x + 1)
+        # print(x, end=" ")  # post
+
 
 preorder(1)
 print()
 inorder(1)
 print()
 postorder(1)
+print()
+DFS(1)

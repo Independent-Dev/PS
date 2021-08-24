@@ -23,8 +23,7 @@ def lis(arr):
 N = int(input())
 arr = list(map(int, input().split()))
 print(lis(arr))
-이
-# 준호 풀
+# 준호 풀이
 dp = [1] * N
 
 for i in range(1, N):
