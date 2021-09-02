@@ -1,4 +1,4 @@
-# 210825
+# 210901
 from examine.examine import examine
 import sys
 
@@ -23,7 +23,7 @@ def solution(**kwargs):
         else:
             part_set = set(part)
             # breakpoint()
-            for i in range(1, M + 1):
+            for i in range(1, N + 1):
                 if i not in part_set:
                     flag = dfs(count + 1, part + [i])
                     if flag:
@@ -39,4 +39,4 @@ def solution(**kwargs):
     return [dfs(1)]
 
 if __name__ == "__main__":
-    print(solution(examine=False))
+    print(solution(examine=True))
