@@ -1,4 +1,5 @@
 # 210907
+# 210909 다시 풀음.
 from examine.examine import examine
 import sys
 
@@ -10,13 +11,16 @@ def solution(**kwargs):
     N, M = list(map(int, input().split()))
 
     def dfs(current=0, remain=M, last=0):
-        result = current
-        for i in range(last, N):
-            score, time = problem_list[i]
-            if remain - time >= 0:
-                result = max(result, dfs(current + score, remain - time, i + 1))
-            result = max(result, dfs(current, remain, i + 1))
-        return result
+        if remain < 0:
+            return 0
+        if last == N:
+            return current
+        score, time = problem_list[last]
+        return max(
+            current,
+            dfs(current + score, remain - time, last + 1),
+            dfs(current, remain, last + 1)
+        )
 
     problem_list = []
     for _ in range(N):
