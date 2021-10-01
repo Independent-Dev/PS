@@ -15,6 +15,23 @@ def solution(**kwargs):
             next_x = cur_x + move_x
             if danji_size > next_y >= 0 and danji_size > next_x >= 0 and danji_map[next_y][next_x]:
                 dfs(next_y, next_x)
+    
+    def bfs(first_y=0, first_x=0):
+        cur_list = [(first_y, first_x)]
+        danji_map[first_y][first_x] = 0
+        result_list[-1] += 1
+        while cur_list:
+            temp = list()
+            for cur_y, cur_x in cur_list:
+                for move_y, move_x in MOVE_LIST:
+                    next_y = cur_y + move_y
+                    next_x = cur_x + move_x
+                    if danji_size > next_y >= 0 and danji_size > next_x >= 0 and danji_map[next_y][next_x]:
+                        danji_map[next_y][next_x] = 0
+                        result_list[-1] += 1
+                        temp.append((next_y, next_x))
+            cur_list = temp[:]
+
 
     if kwargs['examine']:
         sys.stdin = open(f"{kwargs['folder_path']}/in{kwargs['id']}.txt", 'r')
@@ -31,7 +48,8 @@ def solution(**kwargs):
         for j in range(danji_size):
             if danji_map[i][j]:
                 result_list.append(0)
-                dfs(i, j)
+                # dfs(i, j)
+                bfs(i, j)
         
     return [[str(len(result_list))]] + [[str(result)] for result in sorted(result_list)]
 
