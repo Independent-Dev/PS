@@ -30,11 +30,11 @@ def postorder(x):
 # teacher sol
 def DFS(x):
     if x <= 7:
-        # print(x, end=" ")  # pre
+        # print(x, end=" ")  # pre: 대부분의 문제
         DFS(2 * x)
-        # print(x, end=" ")  # in
+        # print(x, end=" ")  # in: 하노이의 탑??
         DFS(2 * x + 1)
-        # print(x, end=" ")  # post
+        # print(x, end=" ")  # post: 병합정렬
 
 
 preorder(1)
