@@ -10,7 +10,8 @@ def examine(function):
             while os.path.isfile(f"{folder_path}/out{count}.txt"):
                 f = open(f"{folder_path}/out{count}.txt", 'r')
                 for line in f.readlines():
-                    output.append(line.split())
+                    if line.strip():
+                        output.append(line.split())
                 count += 1
 
             for i, o in enumerate(output, start=1):
@@ -19,7 +20,7 @@ def examine(function):
                     print(f"#{i} = success!!")
                 else:
                     print(f"#{i} = not success!!")
-                    print(f"function(): {function(**kwargs, folder_path=os.getcwd(), id=i)}")
+                    print(f"function(): {func_output}")
                 print(f"output: {o}")
         else:
             return function(*args, **kwargs)
