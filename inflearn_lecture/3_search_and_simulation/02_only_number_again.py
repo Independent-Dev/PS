@@ -14,6 +14,14 @@ def solution(**kwargs):
     num = int(answer)
     aliquot_count = 0  # 약수의 개수
 
+    # 나름 최적화하면 이런 식의 코드도 가능하긴 함.
+    # for n in range(1, int(num ** 0.5) + 1):
+    #     if num % n == 0:
+    #         aliquot_count += 2
+
+    # if num % n == 0 and float(n) == num ** 0.5:
+    #     aliquot_count -= 1
+
     for n in range(1, num + 1):
         if num % n == 0:
             aliquot_count += 1
