@@ -1,4 +1,4 @@
-from examine import examine
+from examine.examine import examine
 import sys
 
 @examine
@@ -8,17 +8,21 @@ def solution(**kwargs):
 
     N, K = [int(x) for x in input().split()]
     arr = [int(x) for x in input().split()]
+    arr = arr[K + 1:] + arr[:K + 1]
     count = 0
-    idx = N
+    same_count = 0
     MAX = 100
-    for i, a in enumerate(arr):
-        if a > arr[K]:
+    for a in arr:
+        if a > arr[-1]:
             count += 1
             if a <= MAX:
                 MAX = a
-                idx = i
+                same_count = 0
 
-    return [str(count + len([x for i, x in enumerate(arr) if x == arr[K] and ((i <= K or i > idx) if idx > K else (idx < i <= K))]))]
+        elif a == arr[-1]:
+            same_count += 1
+
+    return [str(count + same_count)]
 
 if __name__ == "__main__":
     print(solution(examine=True))
