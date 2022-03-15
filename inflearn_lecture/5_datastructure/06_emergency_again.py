@@ -1,6 +1,5 @@
-from examine.examine import examine
+from examine import examine
 import sys
-from collections import deque
 
 @examine
 def solution(**kwargs):
@@ -9,21 +8,17 @@ def solution(**kwargs):
 
     N, K = [int(x) for x in input().split()]
     arr = [int(x) for x in input().split()]
-    arr = arr[K + 1:] + arr[:K + 1]
     count = 0
-    same_count = 0
+    idx = N
     MAX = 100
     for i, a in enumerate(arr):
-        if a > arr[-1]:
+        if a > arr[K]:
             count += 1
             if a <= MAX:
                 MAX = a
-                same_count = 0
+                idx = i
 
-        elif a == arr[-1]:
-            same_count += 1
-
-    return [str(count + same_count)]
+    return [str(count + len([x for i, x in enumerate(arr) if x == arr[K] and ((i <= K or i > idx) if idx > K else (idx < i <= K))]))]
 
 if __name__ == "__main__":
     print(solution(examine=True))
