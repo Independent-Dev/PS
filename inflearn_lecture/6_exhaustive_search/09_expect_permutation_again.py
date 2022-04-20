@@ -1,5 +1,5 @@
 from examine import examine
-import sys
+import sys, math
 
 @examine
 def solution(**kwargs):
@@ -17,11 +17,13 @@ def solution(**kwargs):
                     dfs(x + 1, res + target[x] * i, arr + " " + str(i))
 
     N, F = [int(x) for x in input().split()]
-    target = [1] * N
+    factorial_N, base = math.factorial(N), 1
+    target = [factorial_N] * N
     answer = []
-    for i in range(N):
-        for j in range(i - 1, 0, -1):
-            target[j] = target[j] + target[j-1]
+    for i in range(1, N + 1):
+        target[i - 1] /= factorial_N
+        if i != N:
+            factorial_N = factorial_N * i / (N - i)
 
     dfs()
 
