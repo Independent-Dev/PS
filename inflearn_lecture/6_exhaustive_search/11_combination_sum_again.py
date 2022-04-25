@@ -20,7 +20,16 @@ def solution(**kwargs):
     target = [int(x) for x in input().split()]
     divide = int(input())
     res = 0
-    dfs()
+    # dfs()
+
+    # 풀이에 나와있는 것
+    from itertools import combinations
+    for arr in combinations(target, M):
+        if sum(arr) % divide == 0:
+            res += 1
+
+    return [str(res)]
+
 
 if __name__ == "__main__":
     print(solution(examine=True))
