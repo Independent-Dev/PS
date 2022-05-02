@@ -22,6 +22,7 @@ def solution(**kwargs):
     for _ in range(N):
         arr.append([int(x) for x in input().split()])
 
+    arr.sort(key=lambda x: x[1], reverse=True)
     res = 0
     dfs()
 
