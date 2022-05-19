@@ -10,10 +10,10 @@ def solution(**kwargs):
 
     def dfs(idx=0, city_pizza_distance=0):
         nonlocal result
-        if sum(visited) <= M:
+        if not result:
             if idx == len(house_list):
-                if sum(visited) == M:
-                    result = min(result, city_pizza_distance)
+                if sum(visited) <= M:
+                    result = city_pizza_distance
             else:
                 for distance, pizza_store_idx in pizza_distance_list[idx]:
                     visited[pizza_store_idx] = 1
@@ -43,7 +43,7 @@ def solution(**kwargs):
             pizza_distance_list[-1].append([abs(house_y - pizza_store_y) + abs(house_x - pizza_store_x), idx])
         pizza_distance_list[-1].sort()
 
-    result = sum([pizza_distance[-1][0] for pizza_distance in pizza_distance_list])
+    result = None
 
     dfs()
     return [str(result)]
