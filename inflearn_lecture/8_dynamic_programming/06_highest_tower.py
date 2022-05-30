@@ -20,6 +20,8 @@ def solution(**kwargs):
             if target[i][-1] < target[j][-1]:
                 MAX = max(res[j], MAX)
         res[i] = MAX + target[i][1]
+        # 반복문 안의 다른 코드 다 지우고 아래 한 줄로 처리할 수도 있음.
+        # res[i] = max([res[j] if target[i][-1] < target[j][-1] else 0 for j in range(i + 1)]) + target[i][1]
 
     return [str(max(res))]
 
