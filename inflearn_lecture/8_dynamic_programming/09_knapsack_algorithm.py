@@ -17,7 +17,7 @@ def solution(**kwargs):
             if i >= weight:
                 knapsack[i] = max(knapsack[i - weight] + price, knapsack[i])
 
-    return [str(max(knapsack))]
+    return [str(knapsack[-1])]
 
 if __name__ == "__main__":
     print(solution(examine=True))
